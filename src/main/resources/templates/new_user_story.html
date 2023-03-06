@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1> Add User Story</h1>
+  <form method="post" th:action="@{/new-user-story}" th:object="${userStory}">
+      <input th:field="*{id}" type="hidden">
+      <p><label> Story Title: <input type="text" th:field="*{title}"> </label></p>
+      <p><label> Story story: <textarea th:field="*{story}"> </textarea> </label></p>
+      <p><label> Story Acceptance Criteria: <textarea th:field="*{acceptanceCriteria}"> </textarea> </label></p>
+      <p><label> Story Estimation <input type="number" th:field="*{estimation}"> </label></p>
+      <p><label> Story Buisness Value <input type="number" th:field="*{businessValue}"> </label></p>
+      <p><label> Story Status
+          <select th:field="*{userStoryStatus}">
+                <option th:each="dropdownValue : ${dropDownAllStatuses}"
+                th:text="${dropdownValue}"
+                th:value="${dropdownValue}"> </option>
+          </select>
+      </label> </p>
+      <p>
+          <input type="submit" th:value="OK">
+      </p>
+  </form>
+</body>
+</html>
