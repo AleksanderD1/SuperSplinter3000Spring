@@ -8,10 +8,19 @@
   <h1> Add User Story</h1>
   <form method="post" th:action="@{/new-user-story}" th:object="${userStory}">
       <input th:field="*{id}" type="hidden">
-      <p><label> Story Title: <input type="text" th:field="*{title}"> </label></p>
-      <p><label> Story story: <textarea th:field="*{story}"> </textarea> </label></p>
+      <p>
+          <label> Story Title: <input type="text" th:field="*{title}"></label>
+          <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">  </span>
+      </p>
+      <p>
+          <label> Story story: <textarea th:field="*{story}"> </textarea> </label>
+          <span th:if="${#fields.hasErrors('story')}" th:errors="*{story}">  </span>
+      </p>
       <p><label> Story Acceptance Criteria: <textarea th:field="*{acceptanceCriteria}"> </textarea> </label></p>
-      <p><label> Story Estimation <input type="number" th:field="*{estimation}"> </label></p>
+      <p>
+          <label> Story Estimation <input type="number" th:field="*{estimation}"> </label>
+          <span th:if="${#fields.hasErrors('estimation')}" th:errors="*{estimation}">  </span>
+      </p>
       <p><label> Story Buisness Value <input type="number" th:field="*{businessValue}"> </label></p>
       <p><label> Story Status
           <select th:field="*{userStoryStatus}">
